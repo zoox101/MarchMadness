@@ -79,9 +79,6 @@ public class SimpleNet {
 
 				//Add the current node to the list of hit nodes
 				hit.add(node);
-
-				System.out.println(node.id + ": " + node.value);
-
 				
 				//If the node doesn't have any children, it is an answer node
 				if(node.children.isEmpty()) {answers.add(node.value);}
@@ -89,8 +86,6 @@ public class SimpleNet {
 				//If it's not an end node or a start node, get the sigma value
 				else if(!startnodes.contains(node)) {node.value = node.calcSigmoid(node.value);}
 				
-				System.out.println(node.id + ": " + node.value);
-
 				//For every child of the node...
 				for(int i=0; i<node.children.size(); i++) {
 

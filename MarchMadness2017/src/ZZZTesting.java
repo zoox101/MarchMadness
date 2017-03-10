@@ -19,10 +19,10 @@ public class ZZZTesting {
 		end1.connect(endfinal);
 
 		SimpleMatrix inputs = new SimpleMatrix(4, 3);
-		inputs.add(0, 1, 0); inputs.add(0, 2, 0);
-		inputs.add(1, 1, 0); inputs.add(1, 2, 1);
-		inputs.add(2, 1, 1); inputs.add(2, 2, 0);
-		inputs.add(3, 1, 1); inputs.add(3, 2, 1);
+		inputs.add(0, 0, 0); inputs.add(0, 1, 0);
+		inputs.add(1, 0, 0); inputs.add(1, 1, 1);
+		inputs.add(2, 0, 1); inputs.add(2, 1, 0);
+		inputs.add(3, 0, 1); inputs.add(3, 1, 1);
 
 		SimpleMatrix outputs = new SimpleMatrix(4, 1);
 		outputs.add(0, 0, 0);
@@ -39,21 +39,27 @@ public class ZZZTesting {
 		testvector.add(1.0);
 		
 		System.out.println(ga.getCost(testvector));
-						
+		System.out.println(testvector);
 		for(int i=0; i<inputs.size(); i++) {
 			System.out.print(inputs.get(i) + " -- ");
 			SimpleNet.prime(inputs.get(i));
 			System.out.println(SimpleNet.cascade());
 		}
 
-		/*
 		System.out.println(ga.run());
 		for(int i=0; i<inputs.size(); i++) {
 			System.out.print(inputs.get(i) + " -- ");
 			SimpleNet.prime(inputs.get(i));
 			System.out.println(SimpleNet.cascade());
+		}		
+		
+		System.out.println(ga.getCost(testvector));
+		System.out.println(testvector);
+		for(int i=0; i<inputs.size(); i++) {
+			System.out.print(inputs.get(i) + " -- ");
+			SimpleNet.prime(inputs.get(i));
+			System.out.println(SimpleNet.cascade());
 		}
-		*/
 
 	}
 }

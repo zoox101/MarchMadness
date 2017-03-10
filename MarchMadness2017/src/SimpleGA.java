@@ -16,7 +16,6 @@ public class SimpleGA {
 
 	public SimpleVector run() {
 
-
 		int height = SimpleNet.getWeights().size();
 		SimpleMatrix population = new SimpleMatrix(POP_SIZE, height);
 		for(int i=0; i<POP_SIZE; i++) {population.set(i, randomVector(height));}
@@ -34,7 +33,6 @@ public class SimpleGA {
 	}
 
 	private void rankAndSort(SimpleMatrix matrix) {
-		System.out.println(matrix.get(0).cost);
 		for(SimpleVector vector: matrix) {	
 			if(vector.cost == Double.MAX_VALUE) {
 				vector.cost = getCost(vector);}}
@@ -49,13 +47,8 @@ public class SimpleGA {
 		for(int i=0; i<inputs.size(); i++) {
 			SimpleNet.prime(inputs.get(i));
 			SimpleVector netoutputs = SimpleNet.cascade();
-			System.out.println(netoutputs);
 			counter += netoutputs.absDiff(outputs.get(i));			
 		}
-		
-		System.out.println("COUNTER: " + counter);
-
-		
 
 		return counter; 
 	}
@@ -73,8 +66,8 @@ public class SimpleGA {
 		return newvector;
 	}
 	
-	private double randomShift(double element) {return element + Math.random()*0.1;}
+	private double randomShift(double element) {return element + (Math.random()-0.5)*3;}
 	
-	private double randomElement() {return (Math.random()-0.5) * 2;}
+	private double randomElement() {return (Math.random()-0.5) * 20;}
 
 }
